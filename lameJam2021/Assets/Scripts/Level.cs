@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction{
+    Left = 0,
+    TopLeft = 1,
+    TopRight = 2,
+    Right = 3,
+    BottomRight = 4,
+    BottomLeft = 5
+}
+
 public enum TileType
 {
     NormalTile,
@@ -21,7 +30,8 @@ public struct TileInfo
 
 public enum EnemyType
 {
-    Boomer
+    None,
+    Exploder
 }
 
 [System.Serializable]
@@ -30,6 +40,7 @@ public struct EnemyInfo
     public EnemyType type;
     public int x;
     public int y;
+    public Direction facingDirection;
 }
 
 public enum WeaponType
@@ -46,6 +57,7 @@ public struct AllyInfo
     public int movementPoints;
     public int x;
     public int y;
+    public Direction facingDirection;
 }
 
 public class Level : MonoBehaviour

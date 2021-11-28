@@ -32,7 +32,7 @@ public class LevelBuilder : MonoBehaviour
             }
         }
 
-        //construct the array.
+        //construct the tile array.
         tiles = new Tile[MapWidth][];
         for(int i = 0; i < MapWidth; i++){
             tiles[i] = new Tile[MapLength];
@@ -50,8 +50,10 @@ public class LevelBuilder : MonoBehaviour
             if(level.tiles[i].type == TileType.NormalTile){
                 //Debug.Log("curr x:" + level.tiles[i].x + " curr y:" + level.tiles[i].y);
                 tiles[level.tiles[i].x][level.tiles[i].y]
-                    = new NormalTile(level.tiles[i].x, level.tiles[i].y,
-                                    level.tiles[i].specialInfo);
+                    = new NormalTile(
+                        level.tiles[i].x, level.tiles[i].y,
+                        level.tiles[i].specialInfo
+                                    );
             } else if(level.tiles[i].type == TileType.None){
                 continue;
             }
@@ -62,17 +64,40 @@ public class LevelBuilder : MonoBehaviour
                 = tileParent.transform;
         }
 
-        //spawn mobs
-        for(int i = 0; i < level.enemies.Length; i++)
-        {
+        //create the mob array.
+        enemies = new Enemy[level.enemies.Length];
 
+        //create empty parent for the mobs.
+        GameObject enemyParent = new GameObject();
+        enemyParent.name = "Enemies";
+        enemyParent.transform.parent = this.transform.parent;
+
+        //spawn mobs
+        for (int i = 0; i < level.enemies.Length; i++){
+            if(level.enemies[i].type == EnemyType.Exploder){
+                enemies[i] = new Exploder(
+                    level.enemies[i].x,
+                    level.enemies[i].y,
+                    level.enemies[i].facingDirection
+                    );
+            }else if(level.enemies[i].type == EnemyType.None){
+                continue;
+            }
+
+            enemies[i].Spawn();
+            enemies[i].enemyObject.transform.parent =
+                enemyParent.transform;
         }
+
+        //create the player array
+        players = new Player[level.GetPlayers().Length];
 
         //spawn allies
         for (int i = 0; i < level.allies.Length; i++)
         {
             GameObject ally = GameObject.Instantiate(Resources.Load("Prefabs/Hacker")) as GameObject;
             ally.GetComponent<Player>().setPosition(level.allies[i].x, level.allies[i].y);
+            players[i] = ally.GetComponent<Player>();
         }
     }
 

@@ -16,10 +16,9 @@ public class NormalTile : Tile
     Player Player = null;
 
     public NormalTile(int xPos, int yPos, string specialInfo)
+        : base(xPos, yPos, specialInfo)
 {
         TileType = TileType.NormalTile;
-        x = xPos;
-        y = yPos;
 
         if (specialInfo.Equals("b")){
             colour = TileColours.Blue;
@@ -57,17 +56,5 @@ public class NormalTile : Tile
         tilePrefab.name = "Normal Tile (" + x + ", " + y + ")";
 
         return tilePrefab;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

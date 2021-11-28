@@ -1,39 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using System;
-//using Tile;
 
-public class Enemy : MonoBehaviour
-{
+public abstract class Enemy{
+    public Direction dirVec;
+    public int stepsize; //delete?
+    public int x;
+    public int y;
 
-    private int dirVec;
-    private int stepsize;
-    private int x;
-    private int y;
+    public GameObject enemyObject;
 
-    private int[] allowableTiles = {0, 1, 3};
+    public EnemyType type = EnemyType.None;
 
-    public Enemy(int x_, int y_, int direction)
+    public Enemy(int x_, int y_, Direction direction)
     {
         x = x_;
         y = y_;
         dirVec = direction;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         EventManager.current.advanceTimeEvent += Move;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Spawn(){
+        Tile currTile = Game.current.getTile(x, y);
+
+        enemyObject = GameObject.Instantiate(GetEnemyPrefab());
+        enemyObject.transform.position
+            = new Vector3(currTile.tile.transform.position.x,
+                          def.HexagonHeight,
+                          currTile.tile.transform.position.z);
+        rotateToCurrDirection();
     }
 
+    public abstract GameObject GetEnemyPrefab();
+
+    protected void rotateToCurrDirection(){
+        enemyObject.transform.RotateAround
+        (
+        new Vector3(enemyObject.transform.position.x,
+                    enemyObject.transform.position.y,
+                    enemyObject.transform.position.z),
+        new Vector3(0, 1, 0),
+        (60 * (int)dirVec)
+        );
+    }
+
+    #region Movement
     void Move()
     {
         // Calculate the coords of the move based on current x,y and dirVec (and step size in future??)
@@ -50,10 +62,10 @@ public class Enemy : MonoBehaviour
         // if not valid, try the opposite direction
         else
         {
-            int oppDirVec = (dirVec + 3) % 6;
+            int oppDirVec = ((int)dirVec + 3) % 6;
 
             // Attempt move in opposite direction
-            coords = CalculateMove(x, y, oppDirVec);
+            coords = CalculateMove(x, y, (Direction)oppDirVec);
 
             // Get tile at calculated coords
             tile = Game.current.getTile(coords[0], coords[1]);
@@ -70,18 +82,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private int[] CalculateMove(int x, int y, int dirVec)
+    private int[] CalculateMove(int x, int y, Direction dirVec)
     {
         // Start with current (x,y) coordinates
         int[] coords = { x, y };
 
         switch (dirVec)
         {
-            case 0:
+            case Direction.Left:
                 coords[0]--;
                 break;
 
-            case 1:
+            case Direction.TopLeft:
                 if (coords[1] % 2 == 0)
                 {
                     coords[0]--;
@@ -89,7 +101,7 @@ public class Enemy : MonoBehaviour
                 coords[1]--;
                 break;
 
-            case 2:
+            case Direction.TopRight:
                 if (coords[1] % 2 != 0)
                 {
                     coords[0]--;
@@ -97,11 +109,11 @@ public class Enemy : MonoBehaviour
                 coords[1]--;
                 break;
 
-            case 3:
+            case Direction.Right:
                 coords[0]++;
                 break;
 
-            case 4:
+            case Direction.BottomRight:
                 if (coords[1] % 2 == 0)
                 {
                     coords[0]--;
@@ -109,7 +121,7 @@ public class Enemy : MonoBehaviour
                 coords[1]++;
                 break;
 
-            case 5:
+            case Direction.BottomLeft:
                 if (coords[1] % 2 != 0)
                 {
                     coords[0]++;
@@ -119,4 +131,5 @@ public class Enemy : MonoBehaviour
         }
         return coords;
     }
+    #endregion
 }

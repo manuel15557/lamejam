@@ -37,8 +37,10 @@ public class EventManager : MonoBehaviour
     public event Action<int, int> selectTileEvent;
     public void selectTileHandler(int x, int y)
     {
+        print("recieved signal to handle tile selection at " + x + " " + y);
         if (selectTileEvent != null)
         {
+            //print("recieved signal to handle tile selection at " + x + " " + y);
             selectTileEvent(x, y);
         }
     }

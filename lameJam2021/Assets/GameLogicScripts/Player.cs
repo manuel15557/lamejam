@@ -36,11 +36,11 @@ public class Player : MonoBehaviour
         
     }
 
-    public void makeMove(int x, int y)
+    public void MakeMove(int x, int y)
     {
         if (curSelectMove == curSelectedMove.Move)
         {
-            moveCharacter(x, y);
+            MoveCharacter(x, y);
         }
         else if(curSelectMove == curSelectedMove.GrenadeLauncher)
         {
@@ -48,8 +48,72 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void moveCharacter(int x, int y)
+    public void MoveCharacter(int x, int y)
     {
-        // steal kians code for enemy movement
+        // Get tile at calculated coords
+        Tile tile = Game.current.getTile(x, y);
+
+        // If tile is one to which we can move
+        if (tile.GetTileType() == TileType.NormalTile)
+        {
+
+            for (int i = 0; i < 6; i++)
+            {
+                int[] coords = CalculateMove(x, y, i);
+                if (x == coords[0] && y == coords[1])
+                {
+                    // Move is valid! move there. (Alex working on this)
+                }
+            }
+        }
+    }
+    private int[] CalculateMove(int x, int y, int dirVec)
+    {
+        // Start with current (x,y) coordinates
+        int[] coords = { x, y };
+
+        switch (dirVec)
+        {
+            case 0:
+                coords[0]--;
+                break;
+
+            case 1:
+                if (coords[1] % 2 == 0)
+                {
+                    coords[0]--;
+                }
+                coords[1]--;
+                break;
+
+            case 2:
+                if (coords[1] % 2 != 0)
+                {
+                    coords[0]--;
+                }
+                coords[1]--;
+                break;
+
+            case 3:
+                coords[0]++;
+                break;
+
+            case 4:
+                if (coords[1] % 2 == 0)
+                {
+                    coords[0]--;
+                }
+                coords[1]++;
+                break;
+
+            case 5:
+                if (coords[1] % 2 != 0)
+                {
+                    coords[0]++;
+                }
+                coords[1]++;
+                break;
+        }
+        return coords;
     }
 }

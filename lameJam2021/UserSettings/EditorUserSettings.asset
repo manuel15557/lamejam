@@ -12,7 +12,15 @@ EditorUserSettings:
       value: 5b015103060d0c0309595f77147707134e4e4c7c7f787231787a4963e4e66d6d
       flags: 0
     RecentlyUsedSceneGuid-2:
+<<<<<<< Updated upstream
       value: 0255065750045f090c57092114255944404e4c7f297e766179791f60bbe2303e
+=======
+<<<<<<< HEAD
+      value: 0752000407515d0a5c5c5e7449770840144e41282d7f72697f711836b0e5303a
+=======
+      value: 0255065750045f090c57092114255944404e4c7f297e766179791f60bbe2303e
+>>>>>>> AlexBranch5
+>>>>>>> Stashed changes
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650

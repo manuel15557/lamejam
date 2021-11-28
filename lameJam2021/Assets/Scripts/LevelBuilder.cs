@@ -101,6 +101,7 @@ public class LevelBuilder : MonoBehaviour
 
         //create the player array
         players = new Player[level.allies.Length];
+        print(level.allies.Length);
 
         //spawn allies
         for (int i = 0; i < level.allies.Length; i++)
@@ -109,8 +110,11 @@ public class LevelBuilder : MonoBehaviour
             ally.GetComponent<Player>().setPosition(level.allies[i].x, level.allies[i].y);
             ally.GetComponent<Player>().setAmmo(level.allies[0].ammoAmt[0]);
             ally.GetComponent<Player>().setEnergy(level.allies[0].movementPoints);
+            ally.name = "Main Player";
             players[i] = ally.GetComponent<Player>();
         }
+        print("this is players");
+        print(players);
     }
 
     public Tile[][] GetTiles(){

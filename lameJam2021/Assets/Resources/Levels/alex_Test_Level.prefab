@@ -268,7 +268,7 @@ MonoBehaviour:
   allies:
   - weaponTypes: 
     ammoAmt: 03000000
-    movementPoints: 5
+    movementPoints: 10
     x: 4
     y: 7
     facingDirection: 0

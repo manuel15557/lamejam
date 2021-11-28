@@ -44,17 +44,18 @@ public class Game : MonoBehaviour
 
     public void updateHUD()
     {
-        EventManager.current.hud.transform
-            .GetChild(0).GetChild(0)
-            .GetComponent<TextMeshProUGUI>().text =
-            players[0].ammo + " Grenades";
-        EventManager.current.hud.transform
-            .GetChild(0).GetChild(1)
-            .GetComponent<TextMeshProUGUI>().text =
-            players[0].energy + " Points";
-        EventManager.current.hud.transform
-            .GetChild(0).GetChild(2)
-            .GetComponent<TextMeshProUGUI>().text = "5 HP"; //hard coded for now
+        //EventManager.current.hud.transform
+        //    .GetChild(0).GetChild(0)
+        //    .GetComponent<TextMeshProUGUI>().text =
+
+        //    GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>().ammo + " Grenades";
+        //EventManager.current.hud.transform
+        //    .GetChild(0).GetChild(1)
+        //    .GetComponent<TextMeshProUGUI>().text =
+        //    GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>().energy + " Points";
+        //EventManager.current.hud.transform
+        //    .GetChild(0).GetChild(2)
+        //    .GetComponent<TextMeshProUGUI>().text = "5 HP"; //hard coded for now
     }
 
     public void deconstructLevel()

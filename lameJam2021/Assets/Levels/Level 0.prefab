@@ -46,27 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - type: 0
-    x: 0
-    y: 0
-    specialInfo: b
-  - type: 0
-    x: 0
+    x: 1
     y: 1
-    specialInfo: 
-  - type: 0
-    x: 0
-    y: 2
     specialInfo: y
   - type: 0
-    x: 0
-    y: 3
-    specialInfo: 
-  - type: 0
-    x: 0
-    y: 4
-    specialInfo: b
-  - type: 0
-    x: 1
+    x: 2
     y: 1
     specialInfo: 
   - type: 0
@@ -74,12 +58,200 @@ MonoBehaviour:
     y: 2
     specialInfo: y
   - type: 0
+    x: 2
+    y: 2
+    specialInfo: y
+  - type: 0
+    x: 3
+    y: 2
+    specialInfo: y
+  - type: 0
     x: 1
     y: 3
-    specialInfo: 
+    specialInfo: y
   - type: 0
     x: 2
     y: 3
-    specialInfo: 
+    specialInfo: y
+  - type: 0
+    x: 3
+    y: 4
+    specialInfo: b
+  - type: 0
+    x: 3
+    y: 5
+    specialInfo: b
+  - type: 0
+    x: 4
+    y: 5
+    specialInfo: b
+  - type: 0
+    x: 5
+    y: 5
+    specialInfo: b
+  - type: 0
+    x: 3
+    y: 6
+    specialInfo: b
+  - type: 0
+    x: 4
+    y: 6
+    specialInfo: b
+  - type: 0
+    x: 5
+    y: 6
+    specialInfo: b
+  - type: 0
+    x: 6
+    y: 6
+    specialInfo: b
+  - type: 0
+    x: 2
+    y: 7
+    specialInfo: b
+  - type: 0
+    x: 3
+    y: 7
+    specialInfo: b
+  - type: 0
+    x: 4
+    y: 7
+    specialInfo: b
+  - type: 0
+    x: 5
+    y: 7
+    specialInfo: b
+  - type: 0
+    x: 6
+    y: 7
+    specialInfo: b
+  - type: 0
+    x: 7
+    y: 7
+    specialInfo: b
+  - type: 0
+    x: 8
+    y: 7
+    specialInfo: y
+  - type: 0
+    x: 9
+    y: 7
+    specialInfo: y
+  - type: 0
+    x: 10
+    y: 7
+    specialInfo: y
+  - type: 0
+    x: 11
+    y: 7
+    specialInfo: y
+  - type: 0
+    x: 3
+    y: 8
+    specialInfo: b
+  - type: 0
+    x: 4
+    y: 8
+    specialInfo: b
+  - type: 0
+    x: 5
+    y: 8
+    specialInfo: b
+  - type: 0
+    x: 6
+    y: 8
+    specialInfo: b
+  - type: 0
+    x: 3
+    y: 9
+    specialInfo: b
+  - type: 0
+    x: 4
+    y: 9
+    specialInfo: b
+  - type: 0
+    x: 5
+    y: 9
+    specialInfo: b
+  - type: 0
+    x: 3
+    y: 10
+    specialInfo: b
+  - type: 0
+    x: 2
+    y: 11
+    specialInfo: y
+  - type: 0
+    x: 1
+    y: 11
+    specialInfo: y
+  - type: 0
+    x: 1
+    y: 12
+    specialInfo: y
+  - type: 0
+    x: 2
+    y: 12
+    specialInfo: y
+  - type: 0
+    x: 3
+    y: 12
+    specialInfo: y
+  - type: 0
+    x: 1
+    y: 13
+    specialInfo: y
+  - type: 0
+    x: 2
+    y: 13
+    specialInfo: y
+  - type: 0
+    x: 8
+    y: 2
+    specialInfo: b
+  - type: 0
+    x: 8
+    y: 3
+    specialInfo: b
+  - type: 0
+    x: 9
+    y: 4
+    specialInfo: b
+  - type: 0
+    x: 9
+    y: 5
+    specialInfo: b
+  - type: 0
+    x: 11
+    y: 9
+    specialInfo: b
+  - type: 0
+    x: 12
+    y: 10
+    specialInfo: b
+  - type: 0
+    x: 9
+    y: 6
+    specialInfo: y
+  - type: 0
+    x: 10
+    y: 6
+    specialInfo: y
+  - type: 0
+    x: 11
+    y: 6
+    specialInfo: y
+  - type: 0
+    x: 9
+    y: 8
+    specialInfo: y
+  - type: 0
+    x: 10
+    y: 8
+    specialInfo: y
+  - type: 0
+    x: 11
+    y: 8
+    specialInfo: y
   enemies: []
   allies: []

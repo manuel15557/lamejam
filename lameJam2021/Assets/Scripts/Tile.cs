@@ -18,14 +18,14 @@ public abstract class Tile
 
         if(y % 2 == 0)
         {
-            newX = (x * 1 * HexagonWidth) + (HexagonWidth/2);
+            newX = (x * 1 * HexagonWidth) - (HexagonWidth/2);
         }
 
         tile = GameObject.Instantiate(GetTilePrefab());
         tile.AddComponent<TileClicker>();
         TileClicker tileClicker = tile.GetComponent<TileClicker>();
         tileClicker.setCoords(x, y);
-        tile.transform.position = new Vector3(newX, 0, newY);
+        tile.transform.position = new Vector3(newY, 0, newX);
     }
 
     public TileType GetTileType()

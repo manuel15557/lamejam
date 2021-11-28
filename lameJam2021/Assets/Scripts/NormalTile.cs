@@ -15,6 +15,8 @@ public class NormalTile : Tile
     Enemy Enemy = null;
     Player Player = null;
 
+    private bool isHighlighted = false;
+
     public NormalTile(int xPos, int yPos, string specialInfo)
         : base(xPos, yPos, specialInfo)
 {
@@ -60,6 +62,35 @@ public class NormalTile : Tile
 
     public override void highlightTile()
     {
+        isHighlighted = true;
         tile.GetComponent<MeshRenderer>().material = Resources.Load("Materials/HighlightedHex") as Material;
+    }
+
+    public override void unhighlightTile()
+    {
+        isHighlighted = true;
+        if (colour == TileColours.Blue)
+        {
+            tile.GetComponent<MeshRenderer>().material = Resources.Load("Materials/BlueHex") as Material;
+        }
+        else if (colour == TileColours.Yellow)
+        {
+            tile.GetComponent<MeshRenderer>().material = Resources.Load("Materials/YellowHex") as Material;
+        }
+        else if (colour == TileColours.None)
+        {
+            tile.GetComponent<MeshRenderer>().material = Resources.Load("Materials/BlankHex") as Material;
+        }
+    }
+
+    public override void paintTile()
+    {
+        tile.GetComponent<MeshRenderer>().material = Resources.Load("Materials/BlueHex") as Material;
+        colour = TileColours.Blue;
+    }
+
+    public Enemy getEnemy()
+    {
+        return Enemy;
     }
 }

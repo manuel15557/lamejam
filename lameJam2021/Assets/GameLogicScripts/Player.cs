@@ -86,9 +86,13 @@ public class Player : MonoBehaviour
         }
         else if(curSelectMove == curSelectedMove.GrenadeLauncher)
         {
-            if (weapons[0].checkFire(x, y))
+            if (ammo > 0)
             {
-                ammo--;
+                if (weapons[0].checkFire(x, y))
+                {
+                    ammo--;
+                    EventManager.current.advanceTimeHandler();
+                }
             }
         }
     }
@@ -109,9 +113,13 @@ public class Player : MonoBehaviour
                 if (x == possibleMoves[i,0] && y == possibleMoves[i, 1])
                 {
                     // Move is valid! move there. (Alex working on this)
-                    setPosition(x, y);
-                    energy--;
-                    break;
+                    if (energy > 0)
+                    {
+                        setPosition(x, y);
+                        energy--;
+                        EventManager.current.advanceTimeHandler();
+                        break;
+                    }
                 }
             }
             

@@ -6,6 +6,8 @@ public class LevelBuilder : MonoBehaviour
 {
     private Level level = null;
 
+    public int tileShift = 0;
+
     private Tile[][] tiles = null;
     private Enemy[] enemies = null;
     private Player[] players = null;
@@ -67,7 +69,7 @@ public class LevelBuilder : MonoBehaviour
             }
 
             
-            tiles[level.tiles[i].x][level.tiles[i].y].Spawn();
+            tiles[level.tiles[i].x][level.tiles[i].y].Spawn(tileShift);
             tiles[level.tiles[i].x][level.tiles[i].y].tile.transform.parent
                 = tileParent.transform;
         }
@@ -105,6 +107,8 @@ public class LevelBuilder : MonoBehaviour
         {
             GameObject ally = GameObject.Instantiate(Resources.Load("Prefabs/Hacker")) as GameObject;
             ally.GetComponent<Player>().setPosition(level.allies[i].x, level.allies[i].y);
+            ally.GetComponent<Player>().setAmmo(level.allies[0].ammoAmt[0]);
+            ally.GetComponent<Player>().setEnergy(level.allies[0].movementPoints);
             players[i] = ally.GetComponent<Player>();
         }
     }
@@ -119,6 +123,11 @@ public class LevelBuilder : MonoBehaviour
 
     public Player[] GetPlayers(){
         return players;
+    }
+
+    public void setTileShift(int s)
+    {
+        tileShift = s;
     }
 
     // Start is called before the first frame update

@@ -50,6 +50,10 @@ public abstract class Enemy{
     #region Movement
     void Move()
     {
+        if(enemyObject == null)
+        {
+            return;
+        }
         // Calculate the coords of the move based on current x,y and dirVec (and step size in future??)
         int[] coords = CalculateMove(x, y, dirVec);
 
@@ -57,14 +61,24 @@ public abstract class Enemy{
         Tile tile = Game.current.getTile(coords[0], coords[1]);
 
         // If tile is one to which we can move
-        if (tile.GetTileType() == TileType.NormalTile)
+        Debug.Log(dirVec);
+        if ((tile != null) && (tile.GetTileType() == TileType.NormalTile))
         {
-            // move there. (Alex working on this)
+            NormalTile curTile = Game.current.getTile(x, y) as NormalTile;
+            curTile.setEnemy(null);
+            enemyObject.transform.position = tile.tile.transform.position;
+            enemyObject.transform.position = new Vector3(enemyObject.transform.position.x, 1, enemyObject.transform.position.z);
+            x = coords[0];
+            y = coords[1];
+            NormalTile newTile = Game.current.getTile(x, y) as NormalTile;
+            newTile.setEnemy(this);
         }
         // if not valid, try the opposite direction
         else
         {
+            Debug.Log(dirVec);
             int oppDirVec = ((int)dirVec + 3) % 6;
+            Debug.Log((Direction)oppDirVec);
 
             // Attempt move in opposite direction
             coords = CalculateMove(x, y, (Direction)oppDirVec);
@@ -75,7 +89,15 @@ public abstract class Enemy{
             // If THIS NEW tile is one to which we can move
             if (tile.GetTileType() == TileType.NormalTile)
             {
-                // move there. (Alex working on this)
+                NormalTile curTile = Game.current.getTile(x, y) as NormalTile;
+                curTile.setEnemy(null);
+                enemyObject.transform.position = tile.tile.transform.position;
+                enemyObject.transform.position = new Vector3(enemyObject.transform.position.x, 1, enemyObject.transform.position.z);
+                x = coords[0];
+                y = coords[1];
+                NormalTile newTile = Game.current.getTile(x, y) as NormalTile;
+                curTile.setEnemy(this);
+                dirVec = (Direction)oppDirVec;
             }
             else
             {
@@ -104,7 +126,7 @@ public abstract class Enemy{
                 break;
 
             case Direction.TopRight:
-                if (coords[1] % 2 != 0)
+                if (coords[1] % 2 == 0)
                 {
                     coords[0]--;
                 }

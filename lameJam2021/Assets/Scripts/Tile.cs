@@ -18,13 +18,13 @@ public abstract class Tile{
         this.specialInfo = sInfo;
     }
 
-    public void Spawn(){
+    public void Spawn(int shift){
         float newX = x * 1 * def.HexagonWidth;
         float newY = y * (1.5f/ Mathf.Sqrt(3)) * def.HexagonWidth;
 
         if(y % 2 == 0)
         {
-            newX = (x * 1 * def.HexagonWidth) + (def.HexagonWidth / 2);
+            newX = (x * 1 * def.HexagonWidth) + (shift * (def.HexagonWidth / 2));
         }
 
         tile = GameObject.Instantiate(GetTilePrefab());

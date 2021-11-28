@@ -76,12 +76,15 @@ public class Level : MonoBehaviour
 
     private LevelBuilder LevelBuilder = null;
 
+    public int tileShift;
+
     public void buildLevel()
     {
         if(LevelBuilder != null) { return; }
         LevelBuilder = (LevelBuilder)((new GameObject()).AddComponent<LevelBuilder>());
         LevelBuilder.name = "Level Builder";
         LevelBuilder.transform.parent = this.transform;
+        LevelBuilder.setTileShift(tileShift);
         LevelBuilder.SetLevel(this);
         LevelBuilder.buildLevel();
     }

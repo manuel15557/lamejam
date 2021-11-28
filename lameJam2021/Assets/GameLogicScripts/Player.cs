@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
 
     public int[,] possibleMoves = new int[6, 2];
 
+    public int ammo = 0;
+    public int energy = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,8 @@ public class Player : MonoBehaviour
         //possibleMoves = new int[6, 2];
         EventManager.current.selectTileEvent += MakeMove;
         EventManager.current.selectMoveEvent += setMove;
+        weapons = new Weapon[1];
+        weapons[0] = new GrenadeLauncher();
     }
 
     // Update is called once per frame
@@ -45,12 +50,30 @@ public class Player : MonoBehaviour
     {
         if (id == 0)
         {
-            curSelectMove = curSelectedMove.Nothing;
+            if(curSelectMove == curSelectedMove.Move)
+            {
+                unhighlightMoves();
+            }
+            else if (curSelectMove == curSelectedMove.GrenadeLauncher)
+            {
+                weapons[0].unhighlighPossibleShots();
+            }
+                curSelectMove = curSelectedMove.Nothing;
         }
-        if (id == 1)
+        else if (id == 1)
         {
+            if (curSelectMove == curSelectedMove.GrenadeLauncher)
+            {
+                weapons[0].unhighlighPossibleShots();
+            }
             curSelectMove = curSelectedMove.Move;
             setPossibleMoves();
+        }
+        else if (id == 2)
+        {
+            curSelectMove = curSelectedMove.GrenadeLauncher;
+            weapons[0].setPossibleShots(xPos, yPos);
+            weapons[0].highlightPossibleShots();
         }
     }
 
@@ -63,7 +86,10 @@ public class Player : MonoBehaviour
         }
         else if(curSelectMove == curSelectedMove.GrenadeLauncher)
         {
-            weapons[0].checkFire(x, y, xPos, yPos);
+            if (weapons[0].checkFire(x, y))
+            {
+                ammo--;
+            }
         }
     }
 
@@ -84,6 +110,7 @@ public class Player : MonoBehaviour
                 {
                     // Move is valid! move there. (Alex working on this)
                     setPosition(x, y);
+                    energy--;
                     break;
                 }
             }
@@ -163,7 +190,9 @@ public class Player : MonoBehaviour
 
 
     private void setPossibleMoves()
-    { 
+    {
+        unhighlightMoves();
+
         possibleMoves[0, 0] = xPos - 1;
         possibleMoves[0, 1] = yPos;
 
@@ -208,6 +237,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void unhighlightMoves()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            Game.current.unhighlightTile(possibleMoves[i, 0], possibleMoves[i, 1]);
+        }
+    }
+
 
     protected void rotateToCurrDirection()
     {
@@ -219,5 +256,15 @@ public class Player : MonoBehaviour
         new Vector3(0, 1, 0),
         (60 * (int)direction)
         );
+    }
+
+    public void setAmmo(int a)
+    {
+        ammo = a;
+    }
+    
+    public void setEnergy(int e)
+    {
+        energy = e;
     }
 }

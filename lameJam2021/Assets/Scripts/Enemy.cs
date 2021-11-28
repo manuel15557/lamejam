@@ -34,6 +34,8 @@ public abstract class Enemy{
 
     public abstract GameObject GetEnemyPrefab();
 
+    public abstract void damageEnemy();
+
     protected void rotateToCurrDirection(){
         enemyObject.transform.RotateAround
         (

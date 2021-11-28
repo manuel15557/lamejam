@@ -41,7 +41,14 @@ public class Game : MonoBehaviour
     public Tile getTile(int x, int y)
     {
         //return the tile at position x,y
-        return curLevel[activeLevel].GetTiles()[x][y];
+        if ((curLevel[activeLevel].GetTiles().Length > x) & (curLevel[activeLevel].GetTiles()[0].Length > y))
+        {
+            if ((x >= 0) & (y >= 0))
+            {
+                return curLevel[activeLevel].GetTiles()[x][y];
+            }
+        }
+        return null;
     }
 
     public void highlightTile(int x, int y)
@@ -49,9 +56,42 @@ public class Game : MonoBehaviour
         //print(curLevel[activeLevel].GetTiles()[1][14]);
         if ((curLevel[activeLevel].GetTiles().Length > x) & (curLevel[activeLevel].GetTiles()[0].Length > y))
         {
-            if (curLevel[activeLevel].GetTiles()[x][y] != null)
+            if ((x >= 0) & (y >= 0))
             {
-                curLevel[activeLevel].GetTiles()[x][y].highlightTile();
+                if (curLevel[activeLevel].GetTiles()[x][y] != null)
+                {
+                    curLevel[activeLevel].GetTiles()[x][y].highlightTile();
+                }
+            }
+        }
+    }
+
+    public void unhighlightTile(int x, int y)
+    {
+        //print(curLevel[activeLevel].GetTiles()[1][14]);
+        if ((curLevel[activeLevel].GetTiles().Length > x) & (curLevel[activeLevel].GetTiles()[0].Length > y))
+        {
+            if ((x >= 0) & (y >= 0))
+            {
+                if (curLevel[activeLevel].GetTiles()[x][y] != null)
+                {
+                    curLevel[activeLevel].GetTiles()[x][y].unhighlightTile();
+                }
+            }
+        }
+    }
+
+    public void paintTile(int x, int y)
+    {
+        //print(curLevel[activeLevel].GetTiles()[1][14]);
+        if ((curLevel[activeLevel].GetTiles().Length > x) & (curLevel[activeLevel].GetTiles()[0].Length > y))
+        {
+            if ((x >= 0) & (y >= 0))
+            {
+                if (curLevel[activeLevel].GetTiles()[x][y] != null)
+                {
+                    curLevel[activeLevel].GetTiles()[x][y].paintTile();
+                }
             }
         }
     }

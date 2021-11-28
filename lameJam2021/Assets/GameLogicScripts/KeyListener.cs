@@ -28,5 +28,18 @@ public class KeyListener : MonoBehaviour
             }
             print("key 1 pressed and moveselected is " + moveSelected);
         }
+        else if (Input.GetKeyDown("2"))
+        {
+            if (moveSelected != 2)
+            {
+                moveSelected = 2;
+                EventManager.current.selectMoveHandler(2);
+            }
+            else
+            {
+                moveSelected = 0;
+                EventManager.current.selectMoveHandler(0);
+            }
+        }
     }
 }

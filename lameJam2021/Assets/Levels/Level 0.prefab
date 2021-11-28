@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
-  - type: 0
+  - type: 1
     x: 0
     y: 0
     specialInfo: 
@@ -68,6 +68,18 @@ MonoBehaviour:
   - type: 0
     x: 1
     y: 1
+    specialInfo: 
+  - type: 0
+    x: 1
+    y: 2
+    specialInfo: 
+  - type: 0
+    x: 1
+    y: 3
+    specialInfo: 
+  - type: 0
+    x: 2
+    y: 3
     specialInfo: 
   enemies: []
   allies: []

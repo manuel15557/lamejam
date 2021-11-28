@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
-using Tile;
+//using Tile;
 
 public class Enemy : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.current.advanceTimeEvent += Move();
+        EventManager.current.advanceTimeEvent += Move;
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
         Tile tile = Game.current.getTile(coords[0], coords[1]);
 
         // If tile is one to which we can move
-        if (Array.Exists(allowableTiles, tile.type))
+        if (tile.GetTileType() == TileType.NormalTile)
         {
             // move there. (Alex working on this)
         }
@@ -56,10 +56,10 @@ public class Enemy : MonoBehaviour
             coords = CalculateMove(x, y, oppDirVec);
 
             // Get tile at calculated coords
-            Tile tile = Game.current.getTile(coords[0], coords[1]);
+            tile = Game.current.getTile(coords[0], coords[1]);
 
             // If THIS NEW tile is one to which we can move
-            if (Array.Exists(allowableTiles, tile.type))
+            if (tile.GetTileType() == TileType.NormalTile)
             {
                 // move there. (Alex working on this)
             }

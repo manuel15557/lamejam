@@ -5,6 +5,7 @@ using UnityEngine;
 public enum TileType
 {
     NormalTile,
+    None,
     WallTile,
     AcidTile
 }

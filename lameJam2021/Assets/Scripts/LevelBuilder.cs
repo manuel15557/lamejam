@@ -36,14 +36,16 @@ public class LevelBuilder : MonoBehaviour
             tiles[i] = new Tile[MapLength];
         }
 
-        Debug.Log("MapWidth:" + MapWidth + " MapLengh:" + MapLength);
+        //Debug.Log("MapWidth:" + MapWidth + " MapLengh:" + MapLength);
 
         //spawn tiles
         for(int i = 0; i < level.tiles.Length; i++){
             if(level.tiles[i].type == TileType.NormalTile){
-                Debug.Log("curr x:" + level.tiles[i].x + " curr y:" + level.tiles[i].y);
+                //Debug.Log("curr x:" + level.tiles[i].x + " curr y:" + level.tiles[i].y);
                 tiles[level.tiles[i].x][level.tiles[i].y]
                     = new NormalTile(level.tiles[i].x, level.tiles[i].y);
+            } else if(level.tiles[i].type == TileType.None){
+                continue;
             }
 
             tiles[level.tiles[i].x][level.tiles[i].y].Spawn();

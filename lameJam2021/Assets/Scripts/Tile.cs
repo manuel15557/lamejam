@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Tile
 {
     public static float HexagonWidth = 1.75f;
+    public TileType TileType = TileType.None;
 
     public int x;
     public int y;
@@ -22,6 +23,11 @@ public abstract class Tile
 
         tile = GameObject.Instantiate(GetTilePrefab());
         tile.transform.position = new Vector3(newX, 0, newY);
+    }
+
+    public TileType GetTileType()
+    {
+        return TileType;
     }
 
     public abstract GameObject GetTilePrefab();

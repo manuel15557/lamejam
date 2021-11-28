@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    public static Game current = new Game();
+
+    private Game()
+    {
+        //do nothing
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -23,10 +29,9 @@ public class Game : MonoBehaviour
         //return an int representing the tile at position x,y
     }
 
-    /*
     public Tile getTile(int x, int y)
     {
         //return the tile at position x,y
+        return null;
     }
-    */
 }

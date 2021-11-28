@@ -16,6 +16,7 @@ public class NormalTile : Tile
 
     public NormalTile(int xPos, int yPos)
     {
+        TileType = TileType.NormalTile;
         x = xPos;
         y = yPos;
     }

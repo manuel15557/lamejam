@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
-  - type: 1
+  - type: 0
     x: 0
     y: 0
-    specialInfo: 
+    specialInfo: b
   - type: 0
     x: 0
     y: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
   - type: 0
     x: 0
     y: 2
-    specialInfo: 
+    specialInfo: y
   - type: 0
     x: 0
     y: 3
@@ -64,7 +64,7 @@ MonoBehaviour:
   - type: 0
     x: 0
     y: 4
-    specialInfo: 
+    specialInfo: b
   - type: 0
     x: 1
     y: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
   - type: 0
     x: 1
     y: 2
-    specialInfo: 
+    specialInfo: y
   - type: 0
     x: 1
     y: 3

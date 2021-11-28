@@ -60,8 +60,25 @@ public class Level : MonoBehaviour
     {
         if(LevelBuilder != null) { return; }
         LevelBuilder = (LevelBuilder)((new GameObject()).AddComponent<LevelBuilder>());
+        LevelBuilder.name = "Level Builder";
+        LevelBuilder.transform.parent = this.transform;
         LevelBuilder.SetLevel(this);
         LevelBuilder.buildLevel();
+    }
+
+    public Tile[][] GetTiles(){
+        if(LevelBuilder == null) { return null; }
+        return LevelBuilder.GetTiles();
+    }
+
+    public Enemy[] GetEnemies(){
+        if (LevelBuilder == null) { return null; }
+        return LevelBuilder.GetEnemies();
+    }
+
+    public Player[] GetPlayers(){
+        if (LevelBuilder == null) { return null; }
+        return LevelBuilder.GetPlayers();
     }
 
     // Start is called before the first frame update

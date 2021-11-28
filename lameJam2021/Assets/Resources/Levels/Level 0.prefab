@@ -254,4 +254,9 @@ MonoBehaviour:
     y: 8
     specialInfo: y
   enemies: []
-  allies: []
+  allies:
+  - weaponTypes: 
+    ammoAmt: 
+    movementPoints: 0
+    x: 0
+    y: 0

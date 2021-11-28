@@ -25,7 +25,7 @@ public abstract class Tile
         tile.AddComponent<TileClicker>();
         TileClicker tileClicker = tile.GetComponent<TileClicker>();
         tileClicker.setCoords(x, y);
-        tile.transform.position = new Vector3(newY, 0, newX);
+        tile.transform.position = new Vector3(newX, 0, newY);
     }
 
     public TileType GetTileType()

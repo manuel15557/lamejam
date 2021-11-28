@@ -78,6 +78,12 @@ public class Level : MonoBehaviour
         LevelBuilder.buildLevel();
     }
 
+    public void deconstructLevel()
+    {
+        if (LevelBuilder != null) { return; }
+        LevelBuilder.deconstructLevel();
+    }
+
     public Tile[][] GetTiles(){
         if(LevelBuilder == null) { return null; }
         return LevelBuilder.GetTiles();

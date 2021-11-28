@@ -25,6 +25,24 @@ public class EventManager : MonoBehaviour
 
     }
 
+    public event Action<int> startLevelEvent;
+    public void startLevelHandler(int levelNum)
+    {
+        if(startLevelEvent != null)
+        {
+            startLevelEvent(levelNum);
+        }
+    }
+
+    public event Action<int> deconstructLevelEvent;
+    public void deconstructLevelHander(int levelNum)
+    {
+        if(deconstructLevelEvent != null)
+        {
+            deconstructLevelEvent(levelNum);
+        }
+    }
+
     public event Action<int> selectMoveEvent;
     public void selectMoveHandler(int moveID)
     {

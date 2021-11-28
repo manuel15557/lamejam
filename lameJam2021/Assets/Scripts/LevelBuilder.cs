@@ -102,7 +102,7 @@ public class LevelBuilder : MonoBehaviour
     }
 
 
-    public void destoyLevel()
+    public void deconstructLevel()
     {
         if(level == null) { return; }
 

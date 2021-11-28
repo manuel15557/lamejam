@@ -6,24 +6,29 @@ public class Game : MonoBehaviour
 {
     public static Game current;
 
-    public Level[] curLevel = null;
+    public Level[] allLevels = null;
+    public Level curLevel = null;
 
     private int activeLevel;
 
-    private void Awake()
-    {
+    private void Awake(){
         current = this;
     }
-    private void Start()
+    private void Start(){
+        EventManager.current.startLevelEvent += loadLevel;
+        EventManager.current.deconstructLevelEvent += deconstructLevel;
+    }
+
+    public void loadLevel(int levelNum){
+        activeLevel = levelNum;
+        curLevel = GameObject.Instantiate(allLevels[activeLevel]);
+    }
+
+    public void deconstructLevel(int levelNum)
     {
-        //FIX THIS IN ORDER TO ACCESS OTHER LEVELS
-
-        //Level curLevel = (new GameObject()).AddComponent<Level>();
-        curLevel[0] = GameObject.Instantiate(curLevel[0]);
-        //curLevel = levelObject.GetComponent<Level>();
-        print("curLevel is instantiated " + curLevel);
-
-        activeLevel = 0;
+        curLevel.deconstructLevel();
+        Destroy(curLevel); //dangerous!
+        curLevel = null;
     }
 
     // Update is called once per frame
@@ -41,17 +46,17 @@ public class Game : MonoBehaviour
     public Tile getTile(int x, int y)
     {
         //return the tile at position x,y
-        return curLevel[activeLevel].GetTiles()[x][y];
+        return curLevel.GetTiles()[x][y];
     }
 
     public void highlightTile(int x, int y)
     {
         //print(curLevel[activeLevel].GetTiles()[1][14]);
-        if ((curLevel[activeLevel].GetTiles().Length > x) & (curLevel[activeLevel].GetTiles()[0].Length > y))
+        if ((curLevel.GetTiles().Length > x) & (curLevel.GetTiles()[0].Length > y))
         {
-            if (curLevel[activeLevel].GetTiles()[x][y] != null)
+            if (curLevel.GetTiles()[x][y] != null)
             {
-                curLevel[activeLevel].GetTiles()[x][y].highlightTile();
+                curLevel.GetTiles()[x][y].highlightTile();
             }
         }
     }

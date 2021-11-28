@@ -24,7 +24,7 @@ public abstract class Tile{
 
         if(y % 2 == 0)
         {
-            newX = (x * 1 * def.HexagonWidth) - (def.HexagonWidth / 2);
+            newX = (x * 1 * def.HexagonWidth) + (def.HexagonWidth / 2);
         }
 
         tile = GameObject.Instantiate(GetTilePrefab());

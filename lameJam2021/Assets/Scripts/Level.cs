@@ -104,6 +104,8 @@ public class Level : MonoBehaviour
     }
 
     public Player[] GetPlayers(){
+        print("levelbuilder");
+        print(LevelBuilder);
         if (LevelBuilder == null) { return null; }
         return LevelBuilder.GetPlayers();
     }

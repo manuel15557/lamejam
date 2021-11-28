@@ -103,6 +103,11 @@ public class LevelBuilder : MonoBehaviour
         players = new Player[level.allies.Length];
         print(level.allies.Length);
 
+        //create empty parent for the ally.
+        GameObject allyParent = new GameObject();
+        allyParent.name = "Allies";
+        allyParent.transform.parent = this.transform.parent;
+
         //spawn allies
         for (int i = 0; i < level.allies.Length; i++)
         {
@@ -112,9 +117,13 @@ public class LevelBuilder : MonoBehaviour
             ally.GetComponent<Player>().setEnergy(level.allies[0].movementPoints);
             ally.name = "Main Player";
             players[i] = ally.GetComponent<Player>();
+            players[i].gameObject.transform.parent =
+                allyParent.transform;
         }
         print("this is players");
         print(players);
+
+        Game.current.readInObjects();
     }
 
     public Tile[][] GetTiles(){

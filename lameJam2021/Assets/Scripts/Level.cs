@@ -86,10 +86,8 @@ public class Level : MonoBehaviour
         LevelBuilder.buildLevel();
     }
 
-    public void deconstructLevel()
-    {
-        if (LevelBuilder != null) { return; }
-        LevelBuilder.deconstructLevel();
+    void OnDestroy(){
+        Destroy(this.gameObject);
     }
 
     public Tile[][] GetTiles(){

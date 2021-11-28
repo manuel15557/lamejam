@@ -21,20 +21,21 @@ public class Game : MonoBehaviour
 
     public void loadLevel(int levelNum){
         activeLevel = levelNum;
-        curLevel = GameObject.Instantiate(allLevels[activeLevel]);
+        curLevel = GameObject.Instantiate(allLevels[activeLevel])
+            .GetComponent<Level>();
+        //TO DO EventManager.current.hud
     }
 
     public void deconstructLevel(int levelNum)
     {
-        curLevel.deconstructLevel();
-        Destroy(curLevel); //dangerous!
+        if(curLevel == null) { return; }
+        Destroy(curLevel);
         curLevel = null;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
+        if(curLevel == null) { return; }
     }
 
     public int checkTile(int x, int y)

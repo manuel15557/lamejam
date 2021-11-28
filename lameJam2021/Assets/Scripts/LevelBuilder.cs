@@ -109,13 +109,6 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
-
-    public void deconstructLevel()
-    {
-        if(level == null) { return; }
-
-    }
-
     public Tile[][] GetTiles(){
         return tiles;
     }

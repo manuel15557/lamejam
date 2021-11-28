@@ -7,6 +7,7 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager current;
     public GameObject mainMenuScreen; //must be linked on the inspector.
+    public GameObject hud; //must be linked on the inspector.
 
     private void Awake()
     {
@@ -22,7 +23,11 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            EventManager.current.deconstructLevelHander(0);
+        }
+        
     }
 
     public event Action<int> startLevelEvent;
@@ -34,6 +39,7 @@ public class EventManager : MonoBehaviour
             if(mainMenuScreen != null)
             {
                 mainMenuScreen.SetActive(false);
+                //hud.SetActive(true);
             }
         }
     }
@@ -46,7 +52,8 @@ public class EventManager : MonoBehaviour
             deconstructLevelEvent(levelNum);
             if (mainMenuScreen != null)
             {
-                mainMenuScreen.SetActive(false);
+                mainMenuScreen.SetActive(true);
+                //hud.SetActive(false);
             }
         }
     }

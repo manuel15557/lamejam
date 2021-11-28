@@ -22,6 +22,9 @@ public abstract class Tile
         }
 
         tile = GameObject.Instantiate(GetTilePrefab());
+        tile.AddComponent<TileClicker>();
+        TileClicker tileClicker = tile.GetComponent<TileClicker>();
+        tileClicker.setCoords(x, y);
         tile.transform.position = new Vector3(newX, 0, newY);
     }
 

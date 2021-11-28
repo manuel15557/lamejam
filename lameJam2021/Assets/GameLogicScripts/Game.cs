@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    public static Game current = new Game();
+    public static Game current;
 
-    private Game()
+    public Level[] curLevel = null;
+
+    private void Awake()
     {
-        //do nothing
+        current = this;
     }
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        //Level curLevel = (new GameObject()).AddComponent<Level>();
+        curLevel[0] = GameObject.Instantiate(curLevel[0]);
+        //curLevel = levelObject.GetComponent<Level>();
+        print("curLevel is instantiated " + curLevel);
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class Game : MonoBehaviour
     public Tile getTile(int x, int y)
     {
         //return the tile at position x,y
-        return null;
+        print(curLevel);
+        return curLevel[0].GetTiles()[x][y];
     }
 }

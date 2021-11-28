@@ -40,7 +40,7 @@ public class EventManager : MonoBehaviour
         print("recieved signal to handle tile selection at " + x + " " + y);
         if (selectTileEvent != null)
         {
-            //print("recieved signal to handle tile selection at " + x + " " + y);
+            print("select tile event not null");
             selectTileEvent(x, y);
         }
     }

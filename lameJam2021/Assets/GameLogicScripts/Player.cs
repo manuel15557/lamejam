@@ -13,6 +13,7 @@ public enum curSelectedMove
 
 public class Player : MonoBehaviour
 {
+
     private int direction; //represents the direction the model needs to face 0-5 being the 6 possible directions
     curSelectedMove curSelectMove;
 
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EventManager.current.selectTileEvent += MoveCharacter;
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
 
     public void MakeMove(int x, int y)
     {
+
         if (curSelectMove == curSelectedMove.Move)
         {
             MoveCharacter(x, y);
@@ -54,18 +56,24 @@ public class Player : MonoBehaviour
         Tile tile = Game.current.getTile(x, y);
 
         // If tile is one to which we can move
+        print(tile.GetTileType());
         if (tile.GetTileType() == TileType.NormalTile)
         {
 
+            
             for (int i = 0; i < 6; i++)
             {
                 int[] coords = CalculateMove(x, y, i);
                 if (x == coords[0] && y == coords[1])
                 {
                     // Move is valid! move there. (Alex working on this)
+                    setPosition(x, y);
                 }
             }
+            
+            
         }
+        
     }
     private int[] CalculateMove(int x, int y, int dirVec)
     {
@@ -115,5 +123,21 @@ public class Player : MonoBehaviour
                 break;
         }
         return coords;
+    }
+
+    public void setPosition(int x, int y)
+    {
+        print("setting pos");
+        //THIS IS REALLY DUMB
+        float HexagonWidth = 1.75f;
+        float newX = x * 1 * HexagonWidth;
+        float newY = y * (1.5f / Mathf.Sqrt(3)) * HexagonWidth;
+        if (y % 2 == 0)
+        {
+            newX = (x * 1 * HexagonWidth) + (HexagonWidth / 2);
+        }
+        //MANUEL WILL HANDLE IT THO
+
+        this.transform.position = new Vector3(newX, 2, newY);
     }
 }

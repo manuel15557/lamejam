@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Game : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class Game : MonoBehaviour
     protected Level curLevel = null;
 
     private int activeLevel;
+
+
+    private Tile[][] tiles = null;
+    private Enemy[] enemies = null;
+    private Player[] players = null;
 
     private void Awake(){
         current = this;
@@ -23,10 +29,35 @@ public class Game : MonoBehaviour
         activeLevel = levelNum;
         curLevel = GameObject.Instantiate(allLevels[activeLevel])
             .GetComponent<Level>();
-        //TO DO EventManager.current.hud
+
+        tiles = curLevel.GetTiles();
+        enemies = curLevel.GetEnemies();
+        players = curLevel.GetPlayers();
+
+        if(players == null)
+        {
+            print("ERROR: there is no player in the level save file.");
+        }
+
+        updateHUD();
     }
 
-    public void deconstructLevel(int levelNum)
+    public void updateHUD()
+    {
+        EventManager.current.hud.transform
+            .GetChild(0).GetChild(0)
+            .GetComponent<TextMeshProUGUI>().text =
+            players[0].ammo + " Grenades";
+        EventManager.current.hud.transform
+            .GetChild(0).GetChild(1)
+            .GetComponent<TextMeshProUGUI>().text =
+            players[0].energy + " Points";
+        EventManager.current.hud.transform
+            .GetChild(0).GetChild(2)
+            .GetComponent<TextMeshProUGUI>().text = "5 HP"; //hard coded for now
+    }
+
+    public void deconstructLevel()
     {
         if(curLevel == null) { return; }
         Destroy(curLevel);

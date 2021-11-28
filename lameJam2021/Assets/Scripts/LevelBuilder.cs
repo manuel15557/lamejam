@@ -90,7 +90,7 @@ public class LevelBuilder : MonoBehaviour
         }
 
         //create the player array
-        players = new Player[level.GetPlayers().Length];
+        players = new Player[level.allies.Length];
 
         //spawn allies
         for (int i = 0; i < level.allies.Length; i++)

@@ -39,5 +39,10 @@ public abstract class Tile{
         return TileType;
     }
 
+    public virtual void highlightTile()
+    {
+        // this class might need to be abstract
+    }
+
     public abstract GameObject GetTilePrefab();
 }

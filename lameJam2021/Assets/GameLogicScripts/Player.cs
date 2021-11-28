@@ -152,22 +152,7 @@ public class Player : MonoBehaviour
     */
 
     public void setPosition(int x, int y)
-    {
-        /*
-        print("setting pos");
-        //THIS IS REALLY DUMB
-        float HexagonWidth = 1.75f;
-        float newX = x * 1 * HexagonWidth;
-        float newY = y * (1.5f / Mathf.Sqrt(3)) * HexagonWidth;
-        if (y % 2 == 0)
-        {
-            newX = (x * 1 * HexagonWidth) - (HexagonWidth / 2);
-        }
-        //MANUEL WILL HANDLE IT THO
-
-        this.transform.position = new Vector3(newX, 2, newY);
-        */
-
+    { 
         Tile tile = Game.current.getTile(x, y);
         this.transform.position = tile.tile.transform.position;
         this.transform.position = new Vector3(this.transform.position.x, 2, this.transform.position.z);
@@ -208,10 +193,18 @@ public class Player : MonoBehaviour
             possibleMoves[5, 0] = xPos;
         }
 
-        print(possibleMoves);
+        if(curSelectMove == curSelectedMove.Move)
+        {
+            highlightPossibleMoves();
+        }
+    }
+
+
+    private void highlightPossibleMoves()
+    {
         for (int i = 0; i < 6; i++)
         {
-            print(possibleMoves[i,0] + " and " + possibleMoves[i,1]);
+            Game.current.highlightTile(possibleMoves[i, 0], possibleMoves[i, 1]);
         }
     }
 

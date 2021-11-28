@@ -57,4 +57,9 @@ public class NormalTile : Tile
 
         return tilePrefab;
     }
+
+    public override void highlightTile()
+    {
+        tile.GetComponent<MeshRenderer>().material = Resources.Load("Materials/HighlightedHex") as Material;
+    }
 }

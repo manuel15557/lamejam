@@ -60,8 +60,16 @@ public struct AllyInfo
     public Direction facingDirection;
 }
 
+[System.Serializable]
+public struct CameraInfo{
+    public Vector3 location;
+    public Vector3 rotation;
+}
+
 public class Level : MonoBehaviour
 {
+    public CameraInfo cameraInfo;
+
     public TileInfo[] tiles;
     public EnemyInfo[] enemies;
     public AllyInfo[] allies;

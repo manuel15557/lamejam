@@ -18,6 +18,14 @@ public class LevelBuilder : MonoBehaviour
     {
         if(level == null) { return; }
 
+        //move the camera.
+        Camera cam = Camera.main;
+        cam.transform.position = level.cameraInfo.location;
+        cam.transform.rotation = Quaternion.Euler(
+                        level.cameraInfo.rotation.x,
+                        level.cameraInfo.rotation.y,
+                        level.cameraInfo.rotation.z);
+
         int MapWidth = 0;
         int MapLength = 0;
 
@@ -106,7 +114,6 @@ public class LevelBuilder : MonoBehaviour
     {
         if(level == null) { return; }
 
-        //TO DO
     }
 
     public Tile[][] GetTiles(){

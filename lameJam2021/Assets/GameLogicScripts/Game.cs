@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
     public static Game current;
 
     public Level[] allLevels = null;
-    public Level curLevel = null;
+    protected Level curLevel = null;
 
     private int activeLevel;
 

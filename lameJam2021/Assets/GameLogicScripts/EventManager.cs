@@ -6,7 +6,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static EventManager current;
-
+    public GameObject mainMenuScreen; //must be linked on the inspector.
 
     private void Awake()
     {
@@ -31,6 +31,10 @@ public class EventManager : MonoBehaviour
         if(startLevelEvent != null)
         {
             startLevelEvent(levelNum);
+            if(mainMenuScreen != null)
+            {
+                mainMenuScreen.SetActive(false);
+            }
         }
     }
 
@@ -40,6 +44,10 @@ public class EventManager : MonoBehaviour
         if(deconstructLevelEvent != null)
         {
             deconstructLevelEvent(levelNum);
+            if (mainMenuScreen != null)
+            {
+                mainMenuScreen.SetActive(false);
+            }
         }
     }
 

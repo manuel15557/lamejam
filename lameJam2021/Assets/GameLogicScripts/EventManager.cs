@@ -25,7 +25,7 @@ public class EventManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            EventManager.current.deconstructLevelHander(0);
+            EventManager.current.deconstructLevelHander();
         }
         
     }
@@ -39,21 +39,21 @@ public class EventManager : MonoBehaviour
             if(mainMenuScreen != null)
             {
                 mainMenuScreen.SetActive(false);
-                //hud.SetActive(true);
+                hud.SetActive(true);
             }
         }
     }
 
-    public event Action<int> deconstructLevelEvent;
-    public void deconstructLevelHander(int levelNum)
+    public event Action deconstructLevelEvent;
+    public void deconstructLevelHander()
     {
         if(deconstructLevelEvent != null)
         {
-            deconstructLevelEvent(levelNum);
+            deconstructLevelEvent();
             if (mainMenuScreen != null)
             {
                 mainMenuScreen.SetActive(true);
-                //hud.SetActive(false);
+                hud.SetActive(false);
             }
         }
     }

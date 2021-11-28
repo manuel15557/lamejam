@@ -273,4 +273,10 @@ MonoBehaviour:
     x: 2
     y: 3
     facingDirection: 2
-  allies: []
+  allies:
+  - weaponTypes: 00000000
+    ammoAmt: 02000000
+    movementPoints: 7
+    x: 5
+    y: 7
+    facingDirection: 0

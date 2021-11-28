@@ -105,7 +105,7 @@ public class LevelBuilder : MonoBehaviour
         //spawn allies
         for (int i = 0; i < level.allies.Length; i++)
         {
-            GameObject ally = GameObject.Instantiate(Resources.Load("Prefabs/Hacker")) as GameObject;
+            GameObject ally = GameObject.Instantiate(Resources.Load("Prefabs/mainCharacter")) as GameObject;
             ally.GetComponent<Player>().setPosition(level.allies[i].x, level.allies[i].y);
             ally.GetComponent<Player>().setAmmo(level.allies[0].ammoAmt[0]);
             ally.GetComponent<Player>().setEnergy(level.allies[0].movementPoints);

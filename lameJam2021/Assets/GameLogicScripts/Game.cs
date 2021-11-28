@@ -47,17 +47,57 @@ public class Game : MonoBehaviour
     public Tile getTile(int x, int y)
     {
         //return the tile at position x,y
-        return curLevel.GetTiles()[x][y];
+        if ((curLevel.GetTiles().Length > x) & (curLevel.GetTiles()[0].Length > y))
+        {
+            if ((x >= 0) & (y >= 0))
+            {
+                return curLevel.GetTiles()[x][y];
+            }
+        }
+        return null;
     }
 
     public void highlightTile(int x, int y)
     {
-        //print(curLevel[activeLevel].GetTiles()[1][14]);
+        //print(curLevel.GetTiles()[1][14]);
         if ((curLevel.GetTiles().Length > x) & (curLevel.GetTiles()[0].Length > y))
         {
-            if (curLevel.GetTiles()[x][y] != null)
+            if ((x >= 0) & (y >= 0))
             {
-                curLevel.GetTiles()[x][y].highlightTile();
+                if (curLevel.GetTiles()[x][y] != null)
+                {
+                    curLevel.GetTiles()[x][y].highlightTile();
+                }
+            }
+        }
+    }
+
+    public void unhighlightTile(int x, int y)
+    {
+        //print(curLevel.GetTiles()[1][14]);
+        if ((curLevel.GetTiles().Length > x) & (curLevel.GetTiles()[0].Length > y))
+        {
+            if ((x >= 0) & (y >= 0))
+            {
+                if (curLevel.GetTiles()[x][y] != null)
+                {
+                    curLevel.GetTiles()[x][y].unhighlightTile();
+                }
+            }
+        }
+    }
+
+    public void paintTile(int x, int y)
+    {
+        //print(curLevel.GetTiles()[1][14]);
+        if ((curLevel.GetTiles().Length > x) & (curLevel.GetTiles()[0].Length > y))
+        {
+            if ((x >= 0) & (y >= 0))
+            {
+                if (curLevel.GetTiles()[x][y] != null)
+                {
+                    curLevel.GetTiles()[x][y].paintTile();
+                }
             }
         }
     }

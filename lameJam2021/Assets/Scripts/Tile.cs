@@ -44,5 +44,15 @@ public abstract class Tile{
         // this class might need to be abstract
     }
 
+    public virtual void unhighlightTile()
+    {
+        // this class might need to be abstract
+    }
+
+    public virtual void paintTile()
+    {
+
+    }
+
     public abstract GameObject GetTilePrefab();
 }

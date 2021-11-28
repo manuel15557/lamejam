@@ -4,7 +4,10 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public abstract void checkFire(int tx, int ty, int px, int py);
+    public abstract bool checkFire(int x, int y);
+    public abstract void setPossibleShots(int curX, int curY);
+    public abstract void highlightPossibleShots();
+    public abstract void unhighlighPossibleShots();
 
     public GameObject game;
 
